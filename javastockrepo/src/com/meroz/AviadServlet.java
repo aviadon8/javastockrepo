@@ -26,7 +26,7 @@ public class AviadServlet extends HttpServlet{
 		//calculating power
 		int base = 20;
 		int exp = 13;
-		long result = (int)Math.pow(base,exp);
+		long result = (long)Math.pow(base,exp);
 		String power = new String("Calculation 3: Power of " + base + " with exp of " + exp + " is " + result);
 		
 		String resultStr = circle + "<br>" + "<br>" + triangle + "<br>" + "<br>" + power;
