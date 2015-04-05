@@ -11,6 +11,7 @@ public class AviadServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 				throws ServletException, IOException {
 		resp.setContentType("text/html");
+		
 		//calculating circle area
 		
 		double radius = 50;
