@@ -8,6 +8,12 @@ public class Stock {
 	private Float ask;
 	private Float bid;
 	private Date date;
+	private int recommendation;
+	private int stockQuantity;
+	private final static int BUY = 0;
+	private final static int SELL = 1;
+	private final static int REMOVE = 2;
+	private final static int HOLD = 3;
 			   
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 	
@@ -48,6 +54,22 @@ public class Stock {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	public int getRecommendation() {
+		return recommendation;
+	}
+
+	public void setRecommendation(int recommendation) {
+		this.recommendation = recommendation;
+	}
+
+	public int getStockQuantity() {
+		return stockQuantity;
+	}
+
+	public void setStockQuantity(int stockQuantity) {
+		this.stockQuantity = stockQuantity;
 	}
 
 	public String getHtmlDescription() {
