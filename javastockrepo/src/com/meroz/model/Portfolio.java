@@ -16,8 +16,14 @@ public class Portfolio {
 	}
 	
 	public void addStock(Stock stock){
-		stocks[portfolioSize] = stock;
-		portfolioSize++;
+		
+		if(portfolioSize < MAX_PORTFOLIO_SIZE && stock != null){
+			stocks[portfolioSize] = stock;
+			portfolioSize++;
+		}
+		else {
+			System.out.println("The Portfolio is full / Stock is NULL");
+		}
 	}
 	
 	public Stock[] getStock(){

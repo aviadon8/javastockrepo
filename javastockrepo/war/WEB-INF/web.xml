@@ -28,7 +28,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ex04Servlet</servlet-name>
-		<url-pattern>/ex04servlet</url-pattern>
+		<url-pattern>/stockdetails</url-pattern>
 	</servlet-mapping>
 	
 		<servlet>
