@@ -1,8 +1,14 @@
-package com.meroz;
+package com.meroz.model;
 
 import java.text.*;
+
 import java.util.*;
 
+/**
+ * class stock responsible on the structure of the stocks.
+ * @author Aviad_Meroz
+ *
+ */
 public class Stock {
 	private String symbol;
 	private Float ask;
@@ -17,11 +23,29 @@ public class Stock {
 			   
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 	
+	/**
+	 * c'tor of new stock.
+	 * @param newSymbol - the name of stock.
+	 * @param newBid - the bid of stock.
+	 * @param newAsk - the new ask of stock.
+	 * @param date - the date of stock.
+	 */
 	public Stock (String newSymbol, float newBid, float newAsk, Date date){
 		this.symbol = newSymbol;
 		this.bid = newBid;
 		this.ask = newAsk;
 		this.date = date;
+		
+	}
+	
+	/**
+	 * copy c'tor of stock.
+	 * @param stock - the stock name of copy c'tor.
+	 */
+	public Stock(Stock stock){
+		this(new String (stock.getSymbol()), stock.getBid(), stock.getAsk(), new Date(stock.getDate().getTime()));
+		this.recommendation = stock.recommendation;
+		this.stockQuantity = stock.stockQuantity;
 	}
 	
 	public String getSymbol() {

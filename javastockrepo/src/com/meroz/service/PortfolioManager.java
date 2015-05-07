@@ -1,15 +1,17 @@
 package com.meroz.service;
 
 import java.util.Calendar;
+
 import java.util.Date;
 
-import com.meroz.Stock;
 import com.meroz.model.Portfolio;
+import com.meroz.model.Stock;
 
 public class PortfolioManager {
 
 	public Portfolio getPortfolio() {
 		
+		String portfolioTitle = "Portfolio #1";
 		Calendar cal = Calendar.getInstance();
 		cal.set(2014, 10, 15);
 		
@@ -17,7 +19,7 @@ public class PortfolioManager {
 		Date date2 = cal.getTime();
 		Date date3 = cal.getTime();
 		
-		Portfolio portfolio = new Portfolio();
+		Portfolio portfolio = new Portfolio(portfolioTitle);
 		
 		Stock s1 = new Stock("PIH",13.1F,12.4F,date1);
 		Stock s2 = new Stock("AAL",5.78F,5.5F,date2);
