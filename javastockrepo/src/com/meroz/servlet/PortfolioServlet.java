@@ -1,7 +1,6 @@
 package com.meroz.servlet;
 
 import java.io.IOException;
-
 import javax.servlet.http.*;
 
 import com.meroz.model.Portfolio;

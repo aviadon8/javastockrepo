@@ -7,6 +7,12 @@ import java.util.Date;
 import com.meroz.model.Portfolio;
 import com.meroz.model.Stock;
 
+/**manage the portfoilio of stocks. 
+ * create 3 stocks with their values.
+ * include 3 stocks: s1, s2, s3.
+ * @author Aviad_Meroz
+ *
+ */
 public class PortfolioManager {
 
 	public Portfolio getPortfolio() {
