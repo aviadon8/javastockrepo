@@ -1,8 +1,9 @@
 package com.meroz.model;
 
 import java.text.*;
-
 import java.util.*;
+
+import com.meroz.model.Portfolio.ALGO_RECOMMENDATION;
 
 /**
  * class stock responsible on the structure of the stocks.
@@ -14,15 +15,11 @@ public class Stock {
 	private Float ask;
 	private Float bid;
 	private Date date;
-	private int recommendation;
+	private Portfolio.ALGO_RECOMMENDATION recommendation;
 	private int stockQuantity;
-	private final static int BUY = 0;
-	private final static int SELL = 1;
-	private final static int REMOVE = 2;
-	private final static int HOLD = 3;
-			   
+
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-	
+
 	/**
 	 * c'tor of new stock.
 	 * @param newSymbol - the name of stock.
@@ -35,9 +32,9 @@ public class Stock {
 		this.bid = newBid;
 		this.ask = newAsk;
 		this.date = date;
-		
+		this.stockQuantity = 0;	
 	}
-	
+
 	/**
 	 * copy c'tor of stock.
 	 * @param stock - the stock name of copy c'tor.
@@ -45,9 +42,9 @@ public class Stock {
 	public Stock(Stock stock){
 		this(new String (stock.getSymbol()), stock.getBid(), stock.getAsk(), new Date(stock.getDate().getTime()));
 		this.recommendation = stock.recommendation;
-		this.stockQuantity = stock.stockQuantity;
+		this.stockQuantity = stock.getStockQuantity();
 	}
-	
+
 	public String getSymbol() {
 		return symbol;
 	}
@@ -80,11 +77,11 @@ public class Stock {
 		this.date = date;
 	}
 
-	public int getRecommendation() {
+	public ALGO_RECOMMENDATION getRecommendation() {
 		return recommendation;
 	}
 
-	public void setRecommendation(int recommendation) {
+	public void setRecommendation(ALGO_RECOMMENDATION recommendation) {
 		this.recommendation = recommendation;
 	}
 
@@ -98,7 +95,7 @@ public class Stock {
 
 	public String getHtmlDescription() {
 		String resultStr = "<b>Stocksymbol</b>: " +this.getSymbol()+  "<b> Bid</b>: " +this.getBid()+ "<b> Ask</b>: " +this.getAsk()+
-				"<b> Date:</b> " + this.dateFormat.format(this.getDate());
+				"<b> Quantity</b>: " + this.getStockQuantity() + "<b> Date:</b> " + this.dateFormat.format(this.getDate());
 		return resultStr;
 	}
 }

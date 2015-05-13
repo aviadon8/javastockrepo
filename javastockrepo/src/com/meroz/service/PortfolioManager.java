@@ -16,25 +16,29 @@ import com.meroz.model.Stock;
 public class PortfolioManager {
 
 	public Portfolio getPortfolio() {
-		
-		String portfolioTitle = "Portfolio #1";
+
+		String PortfolioTitle = "Exercise 7 portfolio";
 		Calendar cal = Calendar.getInstance();
 		cal.set(2014, 10, 15);
 		
 		Date date1 = cal.getTime();
 		Date date2 = cal.getTime();
 		Date date3 = cal.getTime();
+	
+		Portfolio myPortfolio = new Portfolio(PortfolioTitle);
+		myPortfolio.updateBalance(10000);
 		
-		Portfolio portfolio = new Portfolio(portfolioTitle);
+		Stock s1 = new Stock("PIH",8.5F, 10.0F,date1);
+		Stock s2 = new Stock("AAL",25.5F, 30.0F ,date2);
+		Stock s3 = new Stock("CAAS",15.5F, 20.0F,date3);
 		
-		Stock s1 = new Stock("PIH",13.1F,12.4F,date1);
-		Stock s2 = new Stock("AAL",5.78F,5.5F,date2);
-		Stock s3 = new Stock("CAAS",32.2F,31.5F,date3);
+		myPortfolio.buyStock(s1, 20);
+		myPortfolio.buyStock(s2, 30);
+		myPortfolio.buyStock(s3, 40);
 		
-		portfolio.addStock(s1);
-		portfolio.addStock(s2);
-		portfolio.addStock(s3);
+		myPortfolio.sellStock("AAL", -1);
+		myPortfolio.removeStock("CAAS");
 		
-		return portfolio;
+		return myPortfolio;
 	}
 }
