@@ -3,6 +3,8 @@ package com.meroz.model;
 import java.text.*;
 import java.util.*;
 
+import org.algo.model.StockInterface;
+
 import com.meroz.model.Portfolio.ALGO_RECOMMENDATION;
 
 /**
@@ -10,15 +12,24 @@ import com.meroz.model.Portfolio.ALGO_RECOMMENDATION;
  * @author Aviad_Meroz
  *
  */
-public class Stock {
+public class Stock implements StockInterface {
+	
 	private String symbol;
-	private Float ask;
-	private Float bid;
+	private float ask;
+	private float bid;
 	private Date date;
-	private Portfolio.ALGO_RECOMMENDATION recommendation;
+	private ALGO_RECOMMENDATION recommendation;
 	private int stockQuantity;
+	transient private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-	private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+	public Stock(){
+		this.symbol = new String();
+		this.bid = 0;
+		this.ask = 0;
+		this.date = new Date();
+		this.recommendation = ALGO_RECOMMENDATION.HOLD;
+		this.stockQuantity = 0;
+	}
 
 	/**
 	 * c'tor of new stock.
@@ -32,7 +43,8 @@ public class Stock {
 		this.bid = newBid;
 		this.ask = newAsk;
 		this.date = date;
-		this.stockQuantity = 0;	
+		this.recommendation = ALGO_RECOMMENDATION.HOLD;
+		this.stockQuantity = 0;
 	}
 
 	/**
@@ -40,8 +52,8 @@ public class Stock {
 	 * @param stock - the stock name of copy c'tor.
 	 */
 	public Stock(Stock stock){
-		this(new String (stock.getSymbol()), stock.getBid(), stock.getAsk(), new Date(stock.getDate().getTime()));
-		this.recommendation = stock.recommendation;
+		this(stock.getSymbol(), stock.getBid(), stock.getAsk(), new Date(stock.getDate().getTime()));
+		this.recommendation = stock.getRecommendation();
 		this.stockQuantity = stock.getStockQuantity();
 	}
 
@@ -53,15 +65,15 @@ public class Stock {
 		this.symbol = symbol;
 	}
 
-	public Float getAsk() {
+	public float getAsk() {
 		return ask;
 	}
 
 	public void setAsk(Float ask) {
 		this.ask = ask;
 	}
-
-	public Float getBid() {
+	
+	public float getBid() {
 		return bid;
 	}
 
@@ -99,23 +111,3 @@ public class Stock {
 		return resultStr;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
