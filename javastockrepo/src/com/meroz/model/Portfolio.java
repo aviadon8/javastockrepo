@@ -20,16 +20,23 @@ public class Portfolio implements PortfolioInterface {
 	private StockInterface[] stocks;
 	private int portfolioSize;
 	private float balance = 0;
-	
+
+	/**
+	 * Empty c'tor of new portfolio.
+	 */
 	public Portfolio() {
 		this.title = null;
 		this.stocks = new Stock[MAX_PORTFOLIO_SIZE];
 		this.portfolioSize = 0; 
 		this.balance = 0 ;
 	}
-	
+
+	/**
+	 * c'tor of new portfolio.
+	 * @param stockArray - array of stock.
+	 */
 	public Portfolio(Stock[] stockArray) {
-		this.title = new String("temp title");
+		this.title = null;
 		this.portfolioSize = stockArray.length;
 		this.balance = 0;
 		this.stocks = new StockInterface[MAX_PORTFOLIO_SIZE];
@@ -37,7 +44,7 @@ public class Portfolio implements PortfolioInterface {
 			this.stocks[i]= new Stock ((Stock)stockArray[i]);
 		}
 	}
-	
+
 	/**
 	 * c'tor of new portfolio.
 	 * @param title - the title of portfolio. 
@@ -71,7 +78,7 @@ public class Portfolio implements PortfolioInterface {
 			stockInterfaces2[i] = new Stock((Stock) stockInterfaces[i]); 
 		}
 	}
-	
+
 	/** 
 	 * this method update the Balance - the money available in portfolio for investments
 	 * @param amount
@@ -194,7 +201,7 @@ public class Portfolio implements PortfolioInterface {
 	 * @return
 	 */
 	public StockInterface findStock(String symbol) {
-		
+
 		for (int i = 0; i < getPortfolioSize(); i++) {
 			if (getStocks()[i].getSymbol().equals(symbol)){
 				return this.getStocks()[i];
@@ -248,7 +255,7 @@ public class Portfolio implements PortfolioInterface {
 	public float getBalance() {
 		return balance;
 	}
-	
+
 	public static int getMaxSize() {
 
 		return MAX_PORTFOLIO_SIZE;

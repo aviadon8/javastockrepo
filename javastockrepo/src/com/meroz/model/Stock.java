@@ -13,7 +13,7 @@ import com.meroz.model.Portfolio.ALGO_RECOMMENDATION;
  *
  */
 public class Stock implements StockInterface {
-	
+
 	private String symbol;
 	private float ask;
 	private float bid;
@@ -22,6 +22,9 @@ public class Stock implements StockInterface {
 	private int stockQuantity;
 	transient private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
+	/**
+	 * Empty c'tor of Stock.
+	 */
 	public Stock(){
 		this.symbol = new String();
 		this.bid = 0;
@@ -72,7 +75,7 @@ public class Stock implements StockInterface {
 	public void setAsk(Float ask) {
 		this.ask = ask;
 	}
-	
+
 	public float getBid() {
 		return bid;
 	}
